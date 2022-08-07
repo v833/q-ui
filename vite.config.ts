@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-08 00:52:56
  * @LastEditors: v833
- * @LastEditTime: 2022-08-08 01:17:13
+ * @LastEditTime: 2022-08-08 01:35:17
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -19,6 +19,7 @@ export default defineConfig({
       '@r': '@/router',
       '@v': '@/views',
       '@s': '@/store',
+      '@u': '@/utils',
     },
     extensions: ['.ts', '.js', '.vue', '.json', '.tsx'],
   }
