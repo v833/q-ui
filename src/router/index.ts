@@ -17,6 +17,11 @@ const routes: RouteRecordRaw[] = [
         name: 'IconChoose',
         path: '/icon-choose',
         component: () => import(/* webpackChunkName: "icon-choose" */ '@/views/IconChoose.vue'),
+      },
+      {
+        name: 'AreaChoose',
+        path: '/area-choose',
+        component: () => import(/* webpackChunkName: "area-choose" */ '@/views/AreaChoose.vue'),
       }
     ]
   },
