@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-09 08:37:32
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 16:41:01
+ * @LastEditTime: 2022-08-09 17:11:28
 -->
 <template>
   <q-menu :data="data" :default-active="activeName" :collapse="isCollapse" class="el-menu-vertical-demo" router>
@@ -47,7 +47,7 @@ const data = [
   {
     icon: 'TurnOff',
     name: '城市选择',
-    index: '/city-choose'
+    index: '/city-select'
   },
   {
     icon: 'DArrowRight',

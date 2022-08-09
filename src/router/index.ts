@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-08 00:59:06
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 16:45:49
+ * @LastEditTime: 2022-08-09 17:10:52
  */
 
 
@@ -44,6 +44,11 @@ const routes: RouteRecordRaw[] = [
         name: 'Progress',
         path: '/progress',
         component: () => import(/* webpackChunkName: "progress" */ '@/views/Progress.vue'),
+      },
+      {
+        name: 'CitySelect',
+        path: '/city-select',
+        component: () => import(/* webpackChunkName: "city-select" */ '@/views/CitySelect.vue'),
       },
     ]
   },

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, onActivated } from 'vue';
 const props = defineProps({
   percentage: {
     type: Number,
@@ -24,6 +24,10 @@ const props = defineProps({
 const p = ref(0)
 
 onMounted(() => {
+  initData()
+})
+
+const initData = () => {
   if (props.isAnimated) {
     const t = Math.ceil(props.time / props.percentage);
     const timer = setInterval(() => {
@@ -36,6 +40,11 @@ onMounted(() => {
   } else {
     p.value = props.percentage
   }
+}
+
+onActivated(() => {
+  p.value = 0
+  initData()
 })
 
 </script>
