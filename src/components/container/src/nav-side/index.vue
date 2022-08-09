@@ -3,15 +3,16 @@
  * @Author: v833
  * @Date: 2022-08-09 08:37:32
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 16:29:39
+ * @LastEditTime: 2022-08-09 16:41:01
 -->
 <template>
-  <q-menu :data="data" :defualt-active="$route.path" :collapse="isCollapse" class="el-menu-vertical-demo" router>
+  <q-menu :data="data" :default-active="activeName" :collapse="isCollapse" class="el-menu-vertical-demo" router>
   </q-menu>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 const props = defineProps<{
   isCollapse: boolean;
@@ -70,6 +71,11 @@ const data = [
   },
 
 ]
+
+const route = useRoute()
+const activeName = computed(() => {
+  return route.path
+})
 
 </script>
 
