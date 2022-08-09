@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-09 10:15:05
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 11:07:43
+ * @LastEditTime: 2022-08-09 11:41:57
 -->
 <template>
   <div>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import qAreaChoose from '@c/area-choose/src/index.vue';
+// import qAreaChoose from '@c/area-choose/src/index.vue';
 
 const getAreaInfo = (params: object) => {
   console.log('params: ', params);
