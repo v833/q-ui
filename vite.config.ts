@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-08 00:52:56
  * @LastEditors: v833
- * @LastEditTime: 2022-08-08 01:35:17
+ * @LastEditTime: 2022-08-09 09:13:23
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'

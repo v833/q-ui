@@ -1,7 +1,7 @@
 
 
 import { useRouter, createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
-import Container from '@c/container';
+import Container from '@c/container/index.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -13,6 +13,11 @@ const routes: RouteRecordRaw[] = [
         path: '/',
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
+      {
+        name: 'IconChoose',
+        path: '/icon-choose',
+        component: () => import(/* webpackChunkName: "icon-choose" */ '@/views/IconChoose.vue'),
+      }
     ]
   },
 

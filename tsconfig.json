@@ -11,7 +11,17 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "types": ["element-plus/global"],
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "@u/*": ["src/utils/*"],
+      "@c/*": ["src/components/*"],
+      "@r/*": ["src/router/*"],
+      "@v/*": ["src/views/*"]
+    },
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
