@@ -1,13 +1,22 @@
 
 
-import { useRouter, createRouter,RouteRecordRaw, createWebHistory } from 'vue-router';
+import { useRouter, createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
+import Container from '@c/container';
 
-const routes:RouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
   {
-    name: 'Home',
     path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-  }
+    component: Container,
+    children: [
+      {
+        name: 'Home',
+        path: '/',
+        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+      },
+    ]
+  },
+
+
 ]
 
 

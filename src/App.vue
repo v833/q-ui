@@ -3,15 +3,14 @@
  * @Author: v833
  * @Date: 2022-08-08 00:52:56
  * @LastEditors: v833
- * @LastEditTime: 2022-08-08 01:40:14
+ * @LastEditTime: 2022-08-09 08:39:17
 -->
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
+
 
 </script>
 
@@ -20,8 +19,17 @@
   margin: 0;
   padding: 0;
 }
+
 svg {
   width: 1em;
   height: 1em;
+}
+
+html,
+body,
+#app,
+.el-container,
+.el-menu {
+  height: 100%;
 }
 </style>
