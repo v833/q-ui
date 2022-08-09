@@ -9,7 +9,7 @@
   </div>
   <div class="flex">
     <q-trend text="营业额" reverseColor></q-trend>
-    <q-trend type="down" text="销售额" reverseColor></q-trend>
+    <q-trend type="down" color="red" text="销售额" reverseColor></q-trend>
   </div>
 </template>
 

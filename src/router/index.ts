@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-08 00:59:06
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 11:46:39
+ * @LastEditTime: 2022-08-09 12:35:02
  */
 
 
@@ -34,6 +34,11 @@ const routes: RouteRecordRaw[] = [
         name: 'Trend',
         path: '/trend',
         component: () => import(/* webpackChunkName: "trend" */ '@/views/Trend.vue'),
+      },
+      {
+        name: 'Menu',
+        path: '/menu',
+        component: () => import(/* webpackChunkName: "menu" */ '@/views/Menu.vue'),
       },
     ]
   },

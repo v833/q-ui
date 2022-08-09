@@ -34,6 +34,10 @@ const props = defineProps({
   reverseColor: {
     type: Boolean,
     default: false
+  },
+  color: {
+    type: String,
+    default: ''
   }
 })
 
@@ -54,6 +58,7 @@ onMounted(() => {
   .text {
     font-size: 12px;
     margin-right: 4px;
+    color: v-bind(color);
   }
 
   .icon {
