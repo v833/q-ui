@@ -2,10 +2,12 @@ lockfileVersion: 5.3
 
 specifiers:
   '@element-plus/icons': ^0.0.11
+  '@types/lodash': ^4.14.182
   '@types/node': ^18.6.5
   '@vitejs/plugin-vue': ^3.0.0
   '@vitejs/plugin-vue-jsx': ^2.0.0
   element-plus: ^2.2.12
+  lodash: ^4.17.21
   sass: ^1.54.3
   sass-loader: ^13.0.2
   typescript: ^4.6.4
@@ -17,8 +19,10 @@ specifiers:
 
 dependencies:
   '@element-plus/icons': 0.0.11
+  '@types/lodash': 4.14.182
   '@vitejs/plugin-vue-jsx': 2.0.0_vite@3.0.4+vue@3.2.37
   element-plus: 2.2.12_vue@3.2.37
+  lodash: 4.17.21
   sass: 1.54.3
   sass-loader: 13.0.2_sass@1.54.3
   vue: 3.2.37

@@ -18,7 +18,7 @@
         </el-col>
         <el-col :offset="1" :span="15">
           <el-select size="small" v-model="selectValue" filterable placeholder="请搜索" :filter-method="filterMethod">
-            <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item.id"></el-option>
+            <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item.name"></el-option>
           </el-select>
         </el-col>
       </el-row>
@@ -97,7 +97,6 @@ const filterMethod = (value: string) => {
     options.value = values
   } else {
     options.value = values.filter(item => item.name.includes(value) || item.spell.includes(value))
-
   }
 
 }
@@ -123,6 +122,7 @@ const onChatClick = (item: string) => {
 }
 
 watch(selectValue, (value: string) => {
+  result.value = value
   emites('change', value)
 })
 
