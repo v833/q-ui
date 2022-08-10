@@ -3,18 +3,17 @@
  * @Author: v833
  * @Date: 2022-08-09 22:09:49
  * @LastEditors: v833
- * @LastEditTime: 2022-08-10 21:48:19
+ * @LastEditTime: 2022-08-10 22:02:20
 -->
 <template>
-  <el-form v-if="model" :validate-on-rule-change="false" :model="model" :rules="rules" v-bind="$attrs">
+  <el-form ref="form" v-if="model" :validate-on-rule-change="false" :model="model" :rules="rules" v-bind="$attrs">
     <template v-for="(item, index) in options" :key="index">
       <el-form-item v-if="!item!.children || !item.children!.length" :prop="item.prop" :label="item.label">
         <component v-if="item.type !== 'upload'" :is="`el-${item.type}`" v-bind="item.attrs" v-model="model[item.prop!]"
           :placeholder="item.placeholder"></component>
         <el-upload v-else v-bind="item.uploadAttrs" :on-change="handleChange" :on-before-upload="handleBeforeUpload"
           :on-preview="handlePreview" :on-remove="handleRemove" :on-before-remove="handleBeforeRemove"
-          :on-success="handleSuccess" :on-exceed="handleExceed" :on-http-request="handleHttpRequest"
-          :on-error="handleError" :on-progress="handleProgrerss">
+          :on-success="handleSuccess" :on-exceed="handleExceed" :on-error="handleError" :on-progress="handleProgrerss">
           <slot name="uploadArea"></slot>
           <slot name="uploadTip"></slot>
         </el-upload>
@@ -27,6 +26,9 @@
         </component>
       </el-form-item>
     </template>
+    <el-form-item>
+      <slot name="action" :form="form" :model="model" />
+    </el-form-item>
   </el-form>
 </template>
 
@@ -41,14 +43,21 @@ const props = defineProps({
   options: {
     type: Array as PropType<FormOptions[]>,
     required: true
-  }
+  },
+  httpRequest: {
+    type: Function
+  },
 })
 
-const emits = defineEmits(['on-preview', 'on-change', 'on-success', 'on-error', 'on-remove', 'before-upload', 'before-remove', 'http-request', 'on-exceed', 'on-progress'])
+const emits = defineEmits(['on-preview', 'on-change', 'on-success', 'on-error', 'on-remove', 'before-upload', 'before-remove', 'on-exceed', 'on-progress'])
+
+// const expose = defineExpose(['resetForm', 'onSubmit'])
 
 const model = ref<any>(null)
 
 const rules = ref<any>(null)
+
+const form = ref(null)
 
 const initForm = () => {
   if (!props?.options?.length) return
@@ -78,6 +87,12 @@ watch(
   }
 )
 
+const resetFields = () => {
+
+}
+
+
+
 const handleChange = (file: any, fileList: any) => {
   emits('on-change', file, fileList)
 }
@@ -98,9 +113,6 @@ const handleSuccess = (response: any, file: any, fileList: any) => {
 }
 const handleExceed = (file: any, fileList: any) => {
   emits('on-exceed', { file, fileList })
-}
-const handleHttpRequest = () => {
-  emits('http-request')
 }
 const handleError = (err: any, file: any, fileList: any) => {
   emits('on-error', { err, file, fileList })

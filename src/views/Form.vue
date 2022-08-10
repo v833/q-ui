@@ -9,6 +9,10 @@
       <template #uploadTip>
         <div style="color: #ccc;font-size: 12px;">jpg/png files with a size less than 500KB.</div>
       </template>
+      <template #action="scoped">
+        <el-button type="primary" @click="onSubmit(scoped)">提交</el-button>
+        <el-button @click="resetForm(scoped)">重置</el-button>
+      </template>
     </q-form>
   </div>
 </template>
@@ -167,22 +171,26 @@ const options: FormOptions[] = [
     type: 'upload',
     label: '上传',
     prop: 'pic',
-    rules: [
-      {
-        required: true,
-        message: '请上传头像',
-        trigger: 'change'
-      }
-    ],
     uploadAttrs: {
       action: 'https://jsonplaceholder.typicode.com/posts/',
+      limit: 3
     }
   }
 ]
-
-const resetForm = () => {
+const onSubmit = (scoped: any) => {
+  scoped.form.validate((valid: boolean) => {
+    if (valid) {
+      console.log(scoped.model);
+      ElMessage.success('提交成功');
+    } else {
+      ElMessage.error('请检查表单是否填写完整')
+    }
+  })
+}
+const resetForm = (scoped: any) => {
+  console.log('scoped: ', scoped);
   console.log('重置');
-  form.value.resetFields()
+  scoped.form.resetFields()
 }
 const handleRemove = (file: any, fileList: any) => {
   console.log('handleRemove')
