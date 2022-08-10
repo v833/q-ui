@@ -175,6 +175,12 @@ const options: FormOptions[] = [
       action: 'https://jsonplaceholder.typicode.com/posts/',
       limit: 3
     }
+  },
+  {
+    type: 'editor',
+    label: '描述',
+    prop: 'desc',
+    placeholder: '请输入描述',
   }
 ]
 const onSubmit = (scoped: any) => {
@@ -190,13 +196,13 @@ const onSubmit = (scoped: any) => {
 const resetForm = (scoped: any) => {
   console.log('scoped: ', scoped);
   console.log('重置');
-  scoped.form.resetFields()
+  form.value.resetFields()
 }
-const handleRemove = (file: any, fileList: any) => {
+const handleRemove = (file: File, fileList: any) => {
   console.log('handleRemove')
   console.log(file, fileList)
 }
-const handlePreview = (file: any) => {
+const handlePreview = (file: File) => {
   console.log('handlePreview')
   console.log(file)
 }

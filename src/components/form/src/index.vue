@@ -3,20 +3,22 @@
  * @Author: v833
  * @Date: 2022-08-09 22:09:49
  * @LastEditors: v833
- * @LastEditTime: 2022-08-10 22:02:20
+ * @LastEditTime: 2022-08-10 23:00:03
 -->
 <template>
   <el-form ref="form" v-if="model" :validate-on-rule-change="false" :model="model" :rules="rules" v-bind="$attrs">
     <template v-for="(item, index) in options" :key="index">
       <el-form-item v-if="!item!.children || !item.children!.length" :prop="item.prop" :label="item.label">
-        <component v-if="item.type !== 'upload'" :is="`el-${item.type}`" v-bind="item.attrs" v-model="model[item.prop!]"
-          :placeholder="item.placeholder"></component>
-        <el-upload v-else v-bind="item.uploadAttrs" :on-change="handleChange" :on-before-upload="handleBeforeUpload"
-          :on-preview="handlePreview" :on-remove="handleRemove" :on-before-remove="handleBeforeRemove"
-          :on-success="handleSuccess" :on-exceed="handleExceed" :on-error="handleError" :on-progress="handleProgrerss">
+        <component v-if="!['editor', 'upload'].includes(item.type)" :is="`el-${item.type}`" v-bind="item.attrs"
+          v-model="model[item.prop!]" :placeholder="item.placeholder"></component>
+        <el-upload v-else-if="item.type === 'upload'" v-bind="item.uploadAttrs" :on-change="handleChange"
+          :on-before-upload="handleBeforeUpload" :on-preview="handlePreview" :on-remove="handleRemove"
+          :on-before-remove="handleBeforeRemove" :on-success="handleSuccess" :on-exceed="handleExceed"
+          :on-error="handleError" :on-progress="handleProgrerss">
           <slot name="uploadArea"></slot>
           <slot name="uploadTip"></slot>
         </el-upload>
+        <div id="editor" v-else-if="item.type === 'editor'"></div>
       </el-form-item>
       <el-form-item v-if="item.children && item.children.length" :prop="item.prop" :label="item.label">
         <component :is="`el-${item.type}`" v-bind="item.attrs" v-model="model[item.prop!]"
@@ -35,9 +37,9 @@
 <script setup lang="ts">
 
 import { FormOptions } from './types';
-import { PropType, ref, onMounted, watch } from 'vue';
+import { PropType, ref, onMounted, watch, nextTick } from 'vue';
 import cloneDeep from 'lodash/cloneDeep';
-
+import E from 'wangeditor'
 
 const props = defineProps({
   options: {
@@ -59,6 +61,8 @@ const rules = ref<any>(null)
 
 const form = ref(null)
 
+const edit = ref()
+
 const initForm = () => {
   if (!props?.options?.length) return
   const _model: any = {}
@@ -67,6 +71,23 @@ const initForm = () => {
   props.options.forEach((item: FormOptions) => {
     _model[item.prop!] = item.value
     _rules[item.prop!] = item.rules
+    if (item.type === 'editor') {
+      // 初始化富文本
+      nextTick(() => {
+        if (document.getElementById('editor')) {
+          const _editor = new E('#editor')
+          _editor.config.placeholder = item.placeholder
+          _editor.create()
+          _editor.txt.html(item.value)
+          _editor.config.onchange = (newHtml: string) => {
+            // console.log('newHtml: ', newHtml);
+            model.value[item.prop!] = newHtml
+          }
+
+          edit.value = _editor
+        }
+      })
+    }
   })
 
   model.value = cloneDeep(_model)
@@ -88,9 +109,17 @@ watch(
 )
 
 const resetFields = () => {
-
+  form.value.resetFields()
+  if (props.options?.length) {
+    let editorItem = props.options.find((item: FormOptions) => item.type === 'editor')!
+    edit.value.txt.html(editorItem.value || '')
+  }
 }
 
+// vue2 $children
+defineExpose({
+  resetFields
+})
 
 
 const handleChange = (file: any, fileList: any) => {
