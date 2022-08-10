@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-09 08:37:32
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 17:11:28
+ * @LastEditTime: 2022-08-10 23:13:42
 -->
 <template>
   <q-menu :data="data" :default-active="activeName" :collapse="isCollapse" class="el-menu-vertical-demo" router>
@@ -63,6 +63,11 @@ const data = [
     icon: 'Setting',
     name: '表单',
     index: '/form'
+  },
+  {
+    icon: 'Setting',
+    name: '弹出框表单',
+    index: '/model-form'
   },
   {
     icon: 'ShoppingBag',

@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-09 22:09:49
  * @LastEditors: v833
- * @LastEditTime: 2022-08-10 23:00:03
+ * @LastEditTime: 2022-08-10 23:46:32
 -->
 <template>
   <el-form ref="form" v-if="model" :validate-on-rule-change="false" :model="model" :rules="rules" v-bind="$attrs">
@@ -116,9 +116,19 @@ const resetFields = () => {
   }
 }
 
+const validate = () => {
+  return form.value.validate
+}
+
+const getFormData = () => {
+  return model.value
+}
+
 // vue2 $children
 defineExpose({
-  resetFields
+  resetFields,
+  validate,
+  getFormData
 })
 
 

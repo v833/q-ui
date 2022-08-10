@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: v833
+ * @Date: 2022-08-08 00:59:06
+ * @LastEditors: v833
+ * @LastEditTime: 2022-08-10 23:14:04
+ */
 
 import { useRouter, createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
 import Container from '@c/container/index.vue';
@@ -46,6 +53,11 @@ const routes: RouteRecordRaw[] = [
         name: 'Form',
         path: '/form',
         component: () => import(/* webpackChunkName: "form" */ '@/views/Form.vue'),
+      },
+      {
+        name: 'ModelForm',
+        path: '/model-form',
+        component: () => import(/* webpackChunkName: "model-form" */ '@/views/ModelForm.vue'),
       },
     ]
   },
