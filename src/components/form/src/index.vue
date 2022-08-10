@@ -3,14 +3,21 @@
  * @Author: v833
  * @Date: 2022-08-09 22:09:49
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 23:29:50
+ * @LastEditTime: 2022-08-10 21:48:19
 -->
 <template>
-  <el-form :validate-on-rule-change="false" :model="model" :rules="rules" v-bind="$attrs">
+  <el-form v-if="model" :validate-on-rule-change="false" :model="model" :rules="rules" v-bind="$attrs">
     <template v-for="(item, index) in options" :key="index">
       <el-form-item v-if="!item!.children || !item.children!.length" :prop="item.prop" :label="item.label">
-        <component :is="`el-${item.type}`" v-bind="item.attrs" v-model="model[item.prop!]"
+        <component v-if="item.type !== 'upload'" :is="`el-${item.type}`" v-bind="item.attrs" v-model="model[item.prop!]"
           :placeholder="item.placeholder"></component>
+        <el-upload v-else v-bind="item.uploadAttrs" :on-change="handleChange" :on-before-upload="handleBeforeUpload"
+          :on-preview="handlePreview" :on-remove="handleRemove" :on-before-remove="handleBeforeRemove"
+          :on-success="handleSuccess" :on-exceed="handleExceed" :on-http-request="handleHttpRequest"
+          :on-error="handleError" :on-progress="handleProgrerss">
+          <slot name="uploadArea"></slot>
+          <slot name="uploadTip"></slot>
+        </el-upload>
       </el-form-item>
       <el-form-item v-if="item.children && item.children.length" :prop="item.prop" :label="item.label">
         <component :is="`el-${item.type}`" v-bind="item.attrs" v-model="model[item.prop!]"
@@ -26,8 +33,9 @@
 <script setup lang="ts">
 
 import { FormOptions } from './types';
-import { PropType, ref, onMounted } from 'vue';
+import { PropType, ref, onMounted, watch } from 'vue';
 import cloneDeep from 'lodash/cloneDeep';
+
 
 const props = defineProps({
   options: {
@@ -36,11 +44,14 @@ const props = defineProps({
   }
 })
 
-const model = ref<any>({})
+const emits = defineEmits(['on-preview', 'on-change', 'on-success', 'on-error', 'on-remove', 'before-upload', 'before-remove', 'http-request', 'on-exceed', 'on-progress'])
 
-const rules = ref<any>({})
+const model = ref<any>(null)
 
-onMounted(() => {
+const rules = ref<any>(null)
+
+const initForm = () => {
+  if (!props?.options?.length) return
   const _model: any = {}
   const _rules: any = {}
 
@@ -51,7 +62,52 @@ onMounted(() => {
 
   model.value = cloneDeep(_model)
   rules.value = cloneDeep(_rules)
+}
+
+onMounted(() => {
+  initForm()
 })
+
+watch(
+  () => props.options,
+  () => {
+    initForm()
+  },
+  {
+    deep: true
+  }
+)
+
+const handleChange = (file: any, fileList: any) => {
+  emits('on-change', file, fileList)
+}
+const handleBeforeUpload = (file: any, fileList: any) => {
+  emits('before-upload', { file, fileList })
+}
+const handlePreview = (file: any) => {
+  emits('on-preview', file)
+}
+const handleRemove = (file: any, fileList: any) => {
+  emits('on-remove', { file, fileList })
+}
+const handleBeforeRemove = (file: any, fileList: any) => {
+  emits('before-remove', { file, fileList })
+}
+const handleSuccess = (response: any, file: any, fileList: any) => {
+  emits('on-success', { response, file, fileList })
+}
+const handleExceed = (file: any, fileList: any) => {
+  emits('on-exceed', { file, fileList })
+}
+const handleHttpRequest = () => {
+  emits('http-request')
+}
+const handleError = (err: any, file: any, fileList: any) => {
+  emits('on-error', { err, file, fileList })
+}
+const handleProgrerss = (event: any, file: any, fileList: any) => {
+  emits('on-progress', { event, file, fileList })
+}
 
 </script>
 
