@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-08 00:59:06
  * @LastEditors: v833
- * @LastEditTime: 2022-08-11 21:42:57
+ * @LastEditTime: 2022-08-12 23:55:12
  */
 
 import { useRouter, createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
@@ -63,6 +63,11 @@ const routes: RouteRecordRaw[] = [
         name: 'Table',
         path: '/table',
         component: () => import(/* webpackChunkName: "table" */ '@/views/Table.vue'),
+      },
+      {
+        name: 'Calendar',
+        path: '/calendar',
+        component: () => import(/* webpackChunkName: "calendar" */ '@/views/Calendar.vue'),
       },
     ]
   },

@@ -37,7 +37,7 @@
       </template>
     </el-table-column>
   </el-table>
-  <div v-if="pagination && !isLoading" class="pagination" :style="{ justifyContent: paginationAliginJustify }">
+  <div v-if="pagination" class="pagination" :style="{ justifyContent: paginationAliginJustify }">
     <el-pagination v-model:currentPage="currentPage" v-model:page-size="pageSize" :page-sizes="pageSizes"
       layout="total, sizes, prev, pager, next, jumper" :total="total" @size-change="handleSizeChange"
       @current-change="handleCurrentChange" />
