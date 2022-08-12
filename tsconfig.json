@@ -13,6 +13,8 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": false,
     "baseUrl": "./",
     "types": ["element-plus/global"],
     "paths": {

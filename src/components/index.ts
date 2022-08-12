@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-09 11:11:34
  * @LastEditors: v833
- * @LastEditTime: 2022-08-10 23:11:58
+ * @LastEditTime: 2022-08-11 21:42:15
  */
 import { App } from 'vue';
 
@@ -15,6 +15,7 @@ import qProgress from './progress'
 import qCitySelect from './city-select'
 import qForm from './form';
 import qModelForm from './model-form';
+import qTable from './table';
 
 const components = [
   qIconChoose,
@@ -24,7 +25,8 @@ const components = [
   qProgress,
   qCitySelect,
   qForm,
-  qModelForm
+  qModelForm,
+  qTable,
 ]
 
 

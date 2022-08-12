@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-08 00:59:06
  * @LastEditors: v833
- * @LastEditTime: 2022-08-10 23:14:04
+ * @LastEditTime: 2022-08-11 21:42:57
  */
 
 import { useRouter, createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
@@ -58,6 +58,11 @@ const routes: RouteRecordRaw[] = [
         name: 'ModelForm',
         path: '/model-form',
         component: () => import(/* webpackChunkName: "model-form" */ '@/views/ModelForm.vue'),
+      },
+      {
+        name: 'Table',
+        path: '/table',
+        component: () => import(/* webpackChunkName: "table" */ '@/views/Table.vue'),
       },
     ]
   },

@@ -2,8 +2,6 @@
   <div>
     <el-button type="primary" @click="onClick">open</el-button>
     <q-model-form v-model:visible="visible" :options="options">
-
-
       <template #footer="{ form }">
         <el-button type="primary" @click="visible = false">取消</el-button>
         <el-button @click="onConfirm(form)">确定</el-button>
