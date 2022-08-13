@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-08-09 08:59:05
  * @LastEditors: v833
- * @LastEditTime: 2022-08-09 10:06:19
+ * @LastEditTime: 2022-08-13 12:29:41
 -->
 <template>
   <div>
@@ -30,7 +30,7 @@
 
 <script setup lang="ts" scoped>
 import * as Icons from '@element-plus/icons'
-import { toLine, useCopy } from '@/utils';
+import { toLine, useCopy } from '@u/index';
 import { ElMessage } from 'element-plus';
 
 const props = defineProps<{

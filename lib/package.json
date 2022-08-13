@@ -1,0 +1,16 @@
+{
+  "name": "q-element-components",
+  "version": "1.0.0",
+  "main": "index.umd.js",
+  "module": "index.es.js",
+  "types":"index.d.ts",
+  "author": {
+    "name": "Bryce"
+  },
+  "keywords": [
+    "q-element-components",
+    "二次封装",
+    "element-plus",
+    "vue3"
+  ]
+}
