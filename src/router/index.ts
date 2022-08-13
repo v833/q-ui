@@ -6,7 +6,7 @@
  * @LastEditTime: 2022-08-12 23:55:12
  */
 
-import { useRouter, createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
+import { useRouter, createRouter, RouteRecordRaw, createWebHistory, createWebHashHistory } from 'vue-router';
 import Container from '@c/container/index.vue';
 
 const routes: RouteRecordRaw[] = [
@@ -79,5 +79,5 @@ const routes: RouteRecordRaw[] = [
 
 export default createRouter({
   routes,
-  history: createWebHistory()
+  history: createWebHashHistory()
 })

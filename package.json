@@ -8,7 +8,6 @@
     "preview": "vite preview",
     "build:components": "node ./command/build.js",
     "lib": "npm run build:components && cp package.js"
-
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
@@ -16,6 +15,7 @@
     "@fullcalendar/daygrid": "^5.11.2",
     "@fullcalendar/interaction": "^5.11.2",
     "@types/lodash": "^4.14.182",
+    "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "axios": "^0.27.2",
     "element-plus": "^2.2.12",

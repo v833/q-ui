@@ -1,6 +1,6 @@
 {
   "name": "q-element-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.umd.js",
   "module": "index.es.js",
   "types":"index.d.ts",
@@ -12,5 +12,8 @@
     "二次封装",
     "element-plus",
     "vue3"
-  ]
+  ],
+  "repository": {
+    "url": "https://github.com/v833/q-ui"
+  }
 }

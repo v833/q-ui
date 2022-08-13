@@ -7,6 +7,7 @@ specifiers:
   '@fullcalendar/interaction': ^5.11.2
   '@types/lodash': ^4.14.182
   '@types/node': ^18.6.5
+  '@types/vue': ^2.0.0
   '@vitejs/plugin-vue': ^3.0.0
   '@vitejs/plugin-vue-jsx': ^2.0.0
   axios: ^0.27.2
@@ -30,6 +31,7 @@ dependencies:
   '@fullcalendar/daygrid': 5.11.2
   '@fullcalendar/interaction': 5.11.2
   '@types/lodash': 4.14.182
+  '@types/vue': 2.0.0
   '@vitejs/plugin-vue-jsx': 2.0.0_vite@3.0.4+vue@3.2.37
   axios: 0.27.2
   element-plus: 2.2.12_vue@3.2.37
@@ -485,6 +487,13 @@ packages:
   /@types/node/18.6.5:
     resolution: {integrity: sha512-Xjt5ZGUa5WusGZJ4WJPbOT8QOqp6nDynVFRKcUt32bOgvXEoc6o085WNkYTMO7ifAj2isEfQQ2cseE+wT6jsRw==}
     dev: true
+
+  /@types/vue/2.0.0:
+    resolution: {integrity: sha512-WDElkBv/o4lVwu6wYHB06AXs4Xo2fwDjJUpvPRc1QQdzkUSiGFjrYuSCy8raxLE5FObgKq8ND7R5gSZTFLK60w==}
+    deprecated: This is a stub types definition for vuejs (https://github.com/vuejs/vue). vuejs provides its own type definitions, so you don't need @types/vue installed!
+    dependencies:
+      vue: 3.2.37
+    dev: false
 
   /@types/web-bluetooth/0.0.14:
     resolution: {integrity: sha512-5d2RhCard1nQUC3aHcq/gHzWYO6K0WJmAbjO7mQJgCQKtZpgXxv1rOM6O/dBDhDYYVutk1sciOgNSe+5YyfM8A==}
